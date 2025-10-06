@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday, Rihanna 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0a0a0a, #1a0000);
+      min-height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+    }
+
+    /* Partículas brillantes (polvo mágico) */
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,215,0,0.8), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      animation: twinkle 6s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 0.7; transform: scale(1); }
+    }
+
+    /* Fuegos artificiales suaves */
+    #fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      opacity: 1;
+      transition: opacity 1.5s ease;
+    }
+
+    #fireworks.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .burst {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px gold;
+      animation: burstAnim 2s forwards;
+    }
+
+    @keyframes burstAnim {
+      0% { transform: translate(0,0); opacity: 1; width: 4px; height: 4px; }
+      100% { transform: translate(var(--x), var(--y)); opacity: 0; width: 0; height: 0; }
+    }
+
+    /* Contenido central */
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    #birthdayMessage {
+      font-family: 'Dancing Script', cursive;
+      font-size: 64px;
+      color: #ff4d4d;
+      text-shadow: 0 0 20px rgba(255, 77, 77, 0.7);
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    #birthdayMessage.show {
+      opacity: 1;
+    }
+
+    #countdown {
+      font-size: 72px;
+      color: gold;
+      font-weight: bold;
+      margin: 30px 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #countdown.show {
+      opacity: 1;
+    }
+
+    /* Carta elegante */
+    #letter {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 35px;
+      border-radius: 15px;
+      font-size: 19px;
+      line-height: 1.8;
+      color: #ffe0e0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1.8s ease;
+      display: none;
+    }
+
+    #letter.show {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #ff6666;
+      text-align: right;
+    }
+
+    /* Decoración sutil */
+    .deco {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.3;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fuegos artificiales -->
+  <div id="fireworks"></div>
+
+  <!-- Contenido -->
+  <div class="center">
+    <div id="birthdayMessage">Happy 15th Birthday!</div>
+    <div id="countdown">3</div>
+    <div id="letter">
+      <p>Today I celebrate not only your birthday, but the miracle of having you in my life.</p>
+      <p>Every day by your side is a gift I never take for granted. Thank you for being with me, for walking beside me with so much patience, love, and complicity.</p>
+      <p>Thank you for your calming gaze, for your laughter that saves me, for your heart that welcomes me as if I were home. With you, even the simplest days become extraordinary.</p>
+      <p>You are more than my girlfriend… you are my confidant, my peace, my favorite adventure. You are the “home” I always want to return to.</p>
+      <p>On your special day, I wish you to feel all the love you deserve — the love I give you and the love the whole world owes you — because you, Rihanna, are pure magic made person.</p>
+      <p>I love you beyond words, beyond time. Today, tomorrow, and forever.</p>
+      <p>Happy Birthday, my love! 🎂💖</p>
+      <div class="signature">Atentamente, tu mono<br>— José</div>
+    </div>
+  </div>
+
+  <script>
+    // Añadir decoraciones sutiles (velas, cupcakes, corazones)
+    const decos = ['🕯️', '🧁', '❤️', '🎀', '✨'];
+    for (let i = 0; i < 25; i++) {
+      const el = document.createElement('div');
+      el.className = 'deco';
+      el.textContent = decos[Math.floor(Math.random() * decos.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * 100 + 'vh';
+      el.style.fontSize = (14 + Math.random() * 12) + 'px';
+      document.body.appendChild(el);
+    }
+
+    // Partículas brillantes (polvo mágico)
+    for (let i = 0; i < 50; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.top = Math.random() * 100 + 'vh';
+      p.style.width = (1 + Math.random() * 3) + 'px';
+      p.style.height = p.style.width;
+      p.style.animationDelay = Math.random() * 6 + 's';
+      document.body.appendChild(p);
+    }
+
+    // Fuegos artificiales elegantes
+    function createElegantFirework(x, y) {
+      const container = document.getElementById('fireworks');
+      for (let i = 0; i < 40; i++) {
+        const burst = document.createElement('div');
+        burst.className = 'burst';
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 60 + Math.random() * 100;
+        burst.style.setProperty('--x', Math.cos(angle) * dist + 'px');
+        burst.style.setProperty('--y', Math.sin(angle) * dist + 'px');
+        burst.style.left = x + 'px';
+        burst.style.top = y + 'px';
+        container.appendChild(burst);
+      }
+    }
+
+    // Disparar fuegos en posiciones aleatorias
+    setTimeout(() => {
+      createElegantFirework(window.innerWidth / 2, window.innerHeight / 3);
+      setTimeout(() => createElegantFirework(window.innerWidth / 3, window.innerHeight / 2), 500);
+      setTimeout(() => createElegantFirework(window.innerWidth * 0.7, window.innerHeight * 0.6), 1000);
+    }, 500);
+
+    // Secuencia de animación
+    setTimeout(() => {
+      document.getElementById('fireworks').classList.add('hidden');
+      
+      setTimeout(() => {
+        document.getElementById('birthdayMessage').classList.add('show');
+        
+        setTimeout(() => {
+          const cd = document.getElementById('countdown');
+          cd.classList.add('show');
+          let c = 3;
+          const iv = setInterval(() => {
+            c--;
+            if (c >= 0) {
+              cd.textContent = c;
+            } else {
+              clearInterval(iv);
+              cd.style.display = 'none';
+              document.getElementById('letter').classList.add('show');
+            }
+          }, 1000);
+        }, 1800);
+      }, 1000);
+    }, 3500);
+  </script>
+</body>
+</html>
