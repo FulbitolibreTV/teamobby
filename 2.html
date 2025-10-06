@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para ti, Rihanna 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #0c001a, #1a0000);
+      min-height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+    }
+
+    /* Pétalos de rosa cayendo */
+    .petal {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: fallPetal 8s linear infinite;
+    }
+
+    @keyframes fallPetal {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.9; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Luciérnagas */
+    .firefly {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px #ff6b6b;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      z-index: 10;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      color: #ff4d4d;
+      text-shadow: 0 0 15px rgba(255, 77, 77, 0.7);
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    .candle {
+      width: 6px;
+      height: 80px;
+      background: #fff;
+      margin: 0 auto 20px;
+      border-radius: 3px;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s 2s forwards;
+    }
+
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: -4px;
+      width: 14px;
+      height: 20px;
+      background: radial-gradient(circle, yellow, orange, red);
+      border-radius: 50% 50% 0 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .flame.lit {
+      animation: flicker 0.8s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) translateY(0); opacity: 1; }
+      100% { transform: scale(1.1) translateY(-2px); opacity: 0.9; }
+    }
+
+    #letter {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 77, 77, 0.4);
+      padding: 30px;
+      border-radius: 12px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #ffe0e0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1.5s ease;
+      display: none;
+    }
+
+    #letter.show {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+
+    .secret {
+      margin-top: 25px;
+      font-style: italic;
+      color: #ff9e9e;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .secret.show {
+      opacity: 1;
+    }
+
+    #love-languages {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: gold;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-family: 'Cinzel', serif;
+      color: #ff6666;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    // Pétalos de rosa
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.innerHTML = '🌹';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDelay = Math.random() * 8 + 's';
+      p.style.fontSize = (16 + Math.random() * 12) + 'px';
+      document.body.appendChild(p);
+    }
+
+    // Luciérnagas
+    for (let i = 0; i < 30; i++) {
+      const f = document.createElement('div');
+      f.className = 'firefly';
+      f.style.left = Math.random() * 100 + 'vw';
+      f.style.top = Math.random() * 100 + 'vh';
+      f.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(f);
+    }
+  </script>
+
+  <div class="container">
+    <div class="title">Para ti en tu día especial, Rihanna</div>
+    
+    <div class="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+
+    <div id="letter">
+      <p>Today I celebrate not only your birthday, but the miracle of having you in my life.</p>
+      <p>Every day by your side is a gift I never take for granted. Thank you for being with me, for walking beside me with so much patience, love, and complicity.</p>
+      <p>Thank you for your calming gaze, for your laughter that saves me, for your heart that welcomes me as if I were home. With you, even the simplest days become extraordinary.</p>
+      <p>You are more than my girlfriend… you are my confidant, my peace, my favorite adventure. You are the “home” I always want to return to.</p>
+      <p>On your special day, I wish you to feel all the love you deserve — the love I give you and the love the whole world owes you — because you, Rihanna, are pure magic made person.</p>
+      <p>I love you beyond words, beyond time. Today, tomorrow, and forever.</p>
+      <p>Happy Birthday, my love! 🎂💖</p>
+      
+      <div class="signature">Atentamente, tu mono<br>— José</div>
+      
+      <div class="secret" id="secret">✨ Haz clic en el corazón para ver lo que siento por ti</div>
+      <div id="love-languages"></div>
+    </div>
+  </div>
+
+  <script>
+    const flame = document.getElementById('flame');
+    const letter = document.getElementById('letter');
+    const secret = document.getElementById('secret');
+    const loveLang = document.getElementById('love-languages');
+
+    // Encender vela al hacer clic
+    flame.addEventListener('click', () => {
+      flame.classList.add('lit');
+      setTimeout(() => {
+        letter.classList.add('show');
+        setTimeout(() => {
+          secret.classList.add('show');
+        }, 1000);
+      }, 500);
+    });
+
+    // Mensaje secreto: "Te amo" en 10 idiomas
+    secret.addEventListener('click', () => {
+      const languages = [
+        "I love you (English)",
+        "Je t'aime (French)",
+        "Ti amo (Italian)",
+        "Ich liebe dich (German)",
+        "Te amo (Spanish)",
+        "Saranghae (Korean)",
+        "Aishiteru (Japanese)",
+        "Я тебя люблю (Russian)",
+        "Eu te amo (Portuguese)",
+        "我愛你 (Chinese)"
+      ];
+      
+      let html = '<div style="display:grid;grid-template-columns:1fr;gap:8px;">';
+      languages.forEach(lang => {
+        html += `<div>❤️ ${lang}</div>`;
+      });
+      html += '</div>';
+      
+      loveLang.innerHTML = html;
+      loveLang.style.opacity = '1';
+      
+      // Desactivar clic adicional
+      secret.style.opacity = '0.6';
+      secret.style.pointerEvents = 'none';
+    });
+  </script>
+
+</body>
+</html>
